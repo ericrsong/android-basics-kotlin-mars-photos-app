@@ -19,6 +19,9 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface MarsApiService {
+    // remove suspend here will break the code.
+    // if removed, try to clear the build and rebuild it again
+    // simply click run app doesn't work either (after removing the suspend)
     @GET("photos")
     suspend fun getPhotos(): List<MarsPhoto>
 }
