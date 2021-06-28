@@ -41,6 +41,7 @@ class OverviewViewModel : ViewModel() {
 
     // The external immutable LiveData for the request status
     val status: LiveData<MarsApiStatus> = _status
+
     /**
      * Call getMarsPhotos() on init so we can display status immediately.
      */
@@ -56,7 +57,7 @@ class OverviewViewModel : ViewModel() {
         viewModelScope.launch {
             _status.value = MarsApiStatus.LOADING
             try {
-                _photos.value =  MarsApi.retrofitService.getPhotos()
+                _photos.value = MarsApi.retrofitService.getPhotos()
                 _status.value = MarsApiStatus.DONE
 
             } catch (e: Exception) {

@@ -12,7 +12,7 @@ import com.example.android.marsphotos.overview.PhotoGridAdapter
 
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
-    imgUrl?.let{
+    imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
         imgView.load(imgUri) {
             placeholder(R.drawable.loading_animation)
@@ -20,16 +20,21 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
         }
     }
 }
+
 @BindingAdapter("listData")
-fun bindRecycleView(recyclerView: RecyclerView,
-                    data: List<MarsPhoto>?) {
+fun bindRecycleView(
+    recyclerView: RecyclerView,
+    data: List<MarsPhoto>?
+) {
     val adapter = recyclerView.adapter as PhotoGridAdapter
     adapter.submitList(data)
 }
 
 @BindingAdapter("marsApiStatus")
-fun bindStatus(statusImageView: ImageView,
-            status: MarsApiStatus?) {
+fun bindStatus(
+    statusImageView: ImageView,
+    status: MarsApiStatus?
+) {
     when (status) {
         MarsApiStatus.LOADING -> {
             statusImageView.visibility = View.VISIBLE
